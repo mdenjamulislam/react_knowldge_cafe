@@ -4,6 +4,7 @@ import Header from './components/header/header';
 import Posts from './components/Posts/Posts';
 import Bookmarks from './components/Bookmarks/Bookmarks';
 import Bookmark from './components/Bookmark/Bookmark';
+import Blogs from './components/Blogs/Blogs';
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <>
-      <div className='w-full lg:w-[1140px] mx-auto'>
+      {/* <div className='w-full lg:w-[1140px] mx-auto'>
         <Header></Header>
         <div className='grid grid-cols-12 gap-5 pt-8'>
           <div className='col-span-12 lg:col-span-8'>
@@ -40,6 +41,19 @@ function App() {
             <Bookmarks bookmarks={bookmarks} readingTime = {readingTime}></Bookmarks>
           </div>
         </div>
+      </div> */}
+
+      <div className='w-full lg:w-[1170px] mx-auto'>
+        <Header></Header>
+        <div className='grid grid-cols-12 gap-5 pt-8'>
+          <div className='col-span-12 md:col-span-8'>
+            <Blogs handleAddToBookmark={handleAddToBookmark} handleMarkAsRead={handleMarkAsRead}></Blogs>
+          </div>
+          <div className='col-span-12 md:col-span-4'>
+            <Bookmarks bookmarks={bookmarks} readingTime={readingTime}></Bookmarks>
+          </div>
+        </div>
+        
       </div>
     </>
   )

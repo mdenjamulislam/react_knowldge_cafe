@@ -1,6 +1,10 @@
+import { useState } from "react";
 
 const Post = ({ post, handleAddToBookmark, handleMarkAsRead }) => {
     const {post_title, post_date, post_thumb, reading_time, author, author_img, hash_tag} = post;
+
+    const [marked, setMarked] = useState(false);
+    const handleMarked = () => setMarked(!marked);
     return (
         <div className="flex flex-col gap-3">
             <img className="w-full h-auto rounded" src={post_thumb} alt={post_title} />
@@ -24,7 +28,7 @@ const Post = ({ post, handleAddToBookmark, handleMarkAsRead }) => {
                         hash_tag.map((tag, idx) => <span key={idx} className="pr-2"><a href="#">#{tag}</a></span>)
                     } 
                 </p>
-                <button onClick={() => handleMarkAsRead(reading_time)} className="p-2 text-red-700 border border-red-700 text-sm rounded">Mark as Read</button>
+                <button onClick={() => handleMarkAsRead(reading_time)} className={marked ? `bg-red-500 text-white p-2 border border-red-500 rounded` : `p-2 text-red-700 border border-red-700 text-sm rounded`}>Mark as Read</button>
                 
             </div>
         </div>
