@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Post from "../Post/Post";
 
-const Posts = () => {
+const Posts = ({ handleAddToBookmark, handleMarkAsRead }) => {
     const [posts, setPosts] = useState([]);
 
     useEffect( () => {
@@ -12,10 +12,14 @@ const Posts = () => {
 
 
     return (
-        <div>
-            <h3>Posts: {posts.length}</h3>
+        <div className="flex flex-col gap-8">
             {
-                posts.map(post => <Post key={post.id} post={post}></Post>)
+                posts.map(post => <Post 
+                    key={post.id} 
+                    post={post}
+                    handleAddToBookmark = {handleAddToBookmark}
+                    handleMarkAsRead = {handleMarkAsRead}
+                    ></Post>)
             }
         </div>
     );
